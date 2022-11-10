@@ -1,20 +1,24 @@
 package com.nadia.clientes.controller;
 
 import com.nadia.clientes.entity.Cliente;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/clientes")
 public class ClienteController {
 
-    @GetMapping("/clientes/{nome}")
-    public Cliente mostrarCliente(@PathVariable String nome){
+    @GetMapping
+    public Cliente mostrarCliente(@RequestParam String nome){
         Cliente clienteUm = new Cliente();
         clienteUm.setNome(nome);
 
         return clienteUm;
+    }
+
+    @PostMapping
+    public Cliente salvarCliente(@RequestBody Cliente cliente){
+        //Lógica para salvar no banco de dados
+
+        return cliente;
     }
 }
