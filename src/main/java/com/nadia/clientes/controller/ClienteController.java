@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
+@CrossOrigin("*")
 public class ClienteController {
     private ClienteRepository clienteRepository;
     //construtor
@@ -18,7 +19,8 @@ public class ClienteController {
     //método-comportamento
 
     @GetMapping
-    public List<Cliente> listarClientes(){
+    public List<Cliente> listarClientes() throws InterruptedException {
+        //Thread.sleep(12000);
         return (List<Cliente>) clienteRepository.findAll();
     }
 
